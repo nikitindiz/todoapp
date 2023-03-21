@@ -9,7 +9,7 @@ import { ToDoLayout } from './ToDoLayout';
 import { ToDoList } from './ToDoList';
 
 interface ToDoItem {
-  id: number;
+  id: string;
   caption: string;
   done: boolean;
 }
@@ -27,10 +27,49 @@ class App extends React.Component<{}, AppState> {
    * 3. Реализовать компонент ToDoList
    */
 
+  state = {
+      todos: [
+        {
+          id: Math.random().toString(36).substring(2,9),
+          caption: 'пресс качат',
+          done: false,
+        },
+        {
+          id: Math.random().toString(36).substring(2,9),
+          caption: 'бегит',
+          done: false,
+        },
+        {
+          id: Math.random().toString(36).substring(2,9),
+          caption: 'турник',
+          done: false,
+        },
+        {
+          id: Math.random().toString(36).substring(2,9),
+          caption: 'анжумания',
+          done: false,
+        },
+        {
+          id: Math.random().toString(36).substring(2,9),
+          caption: 'пресс качат',
+          done: false,
+        },
+        {
+          id: Math.random().toString(36).substring(2,9),
+          caption: 'бегит',
+          done: false,
+        },
+      ],
+  }
+
   render() {
     return (
-      <ToDoLayout header={<Header />} inputForm={<InputForm />} footer={<Footer />}>
-        <ToDoList />
+      <ToDoLayout
+          header={<Header />}
+          inputForm={<InputForm />}
+          footer={<Footer />}
+      >
+        <ToDoList todos={this.state.todos} />
       </ToDoLayout>
     );
   }
